@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/PJ-Platform/static/css/main.4d664df1.css",
+    "main.js": "/PJ-Platform/static/js/main.cd1356be.js",
+    "static/js/453.6bc83729.chunk.js": "/PJ-Platform/static/js/453.6bc83729.chunk.js",
+    "index.html": "/PJ-Platform/index.html",
+    "main.4d664df1.css.map": "/PJ-Platform/static/css/main.4d664df1.css.map",
+    "main.cd1356be.js.map": "/PJ-Platform/static/js/main.cd1356be.js.map",
+    "453.6bc83729.chunk.js.map": "/PJ-Platform/static/js/453.6bc83729.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4d664df1.css",
+    "static/js/main.cd1356be.js"
+  ]
+}
