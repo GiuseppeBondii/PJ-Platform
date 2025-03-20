@@ -380,7 +380,7 @@ function EmuSchermo({ pressedButtons }) {
             const verticalCollision = (y < goalTop && y + ballSize > goalBottom && vy <= 0);
             if (horizontalCollision && verticalCollision) {
               // Aggiunge 15 secondi e passa al livello successivo
-              setTimeLeft(prev => prev + 5);
+              setTimeLeft(prev => prev + 10);
               const newLevel = level + 1;
               setLevel(newLevel);
               SETLEVEL(generateLevel(newLevel));
