@@ -366,7 +366,7 @@ function EmuSchermo({ pressedButtons }) {
             const horizontalCollision = (x + ballSize > spikeLeft && x < spikeRight);
             const verticalCollision = (y < spikeTop && y + ballSize > spikeBottom && vy <= 0);
             if (horizontalCollision && verticalCollision) {
-              setTimeLeft(prev => prev - 10);
+              setTimeLeft(prev => prev - 5);
               renderImpact(x,y)
               platform.type = "p";
               break;
