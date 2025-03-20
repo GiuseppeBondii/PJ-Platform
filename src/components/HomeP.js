@@ -247,7 +247,7 @@ function HomeP() {
         </div>
 
         <div className="startSelectContainer">
-          <button
+          {/*<button
             className="select-button"
             onMouseDown={handleButtonTouchStart(BUTTONS.SELECT)}
             onMouseUp={handleButtonTouchEnd(BUTTONS.SELECT)}
@@ -266,7 +266,7 @@ function HomeP() {
             onTouchEnd={handleButtonTouchEnd(BUTTONS.START)}
           >
             START
-          </button>
+          </button>*/}
         </div>
       </div>
 
@@ -356,7 +356,7 @@ function HomeP() {
         </div>
 
         <div className="startSelectContainer">
-          <button
+          {/*<button
             className="select-button"
             onMouseDown={handleButtonTouchStart(BUTTONS.SELECT)}
             onMouseUp={handleButtonTouchEnd(BUTTONS.SELECT)}
@@ -375,7 +375,7 @@ function HomeP() {
             onTouchEnd={handleButtonTouchEnd(BUTTONS.START)}
           >
             START
-          </button>
+          </button>*/}
         </div>
       </div>
     </div>
