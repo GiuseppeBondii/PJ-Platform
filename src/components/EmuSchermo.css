@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.emu-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #555555;
+  overflow: hidden;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.ball {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgb(35, 35, 35);
+  /* Le dimensioni (left, bottom, width, height) vengono impostate inline in % */
+}
+
+.platform {
+  position: absolute;
+  background-color: rgb(189, 78, 18);
+  /* L'altezza verrà definita inline (es. 2%) */
+}
+
+.lives-counter {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  font-size: 3.5%;
+  z-index: 2;
+}
+
+.spike {
+  position: absolute;
+  background-color: #0d1377;
+  /* L'altezza verrà definita inline (es. 2%) */
+}
+
+.t-platform {
+  background-color: #c3c3c3;
+  position: absolute;
+}
+
+/* Overlay per il countdown iniziale */
+.countdown-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  color: white;
+  font-size: 100%;
+}
+
+/* Overlay per il Game Over */
+.gameover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  color: white;
+}
+
+.gameover-overlay h1 {
+  font-size: 20%;
+  margin-bottom: 5%;
+}
+
+.gameover-overlay p {
+  font-size: 10%;
+  margin-bottom: 5%;
+}
+
+.gameover-overlay button {
+  padding: 1% 2%;
+  font-size: 5.5%;
+  background-color: #c3c3c3;
+  border: none;
+  border-radius: 0.5%;
+  cursor: pointer;
+}
+
+/* HUD durante il gioco */
+.hud {
+  position: absolute;
+  top: 3%;
+  right: 2%;
+  color: white;
+  font-size: 8%;
+  z-index: 2;
+}
+
+.playAgainButton{
+  color: white;
+  background:rgb(189, 78, 18); 
+  font-family: 'Press Start 2P', monospace;
+
+}
