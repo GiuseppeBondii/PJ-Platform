@@ -21,7 +21,7 @@ const GAME_CONFIG = {
 // Secondary UI Components
 const SlotHeader = () => (
   <div className="slot-header">
-    <h2 className="pixelated">Slot Game</h2>
+    <h2 className="pixelated">Slot 2s</h2>
   </div>
 );
 

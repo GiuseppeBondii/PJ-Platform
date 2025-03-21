@@ -62,7 +62,6 @@
   margin: 0 0 3% 0;
   text-shadow: 0 0.1em 0.2em rgba(0, 0, 0, 0.5);
   color: #f5c242;
-  animation: glow 2s infinite alternate;
 }
 
 @keyframes glow {
