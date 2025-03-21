@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./EmuSchermo.css";
+import SlotTime from "./SlotTime";
 
-const maxHorizontalSpeed = 1.2;
-const jumpVelocity = 6;
+const maxHorizontalSpeed = 1.1;
+const jumpVelocity = 5;
 const gravity = -0.5;
 
 const BUTTONS = {
@@ -19,7 +20,7 @@ const screenHeight = 80; // Altezza massima dello schermo
 const maxX = 100;        // Larghezza massima orizzontale
 const minWidth = 10;
 const maxWidth = 30;
-const minVertical = 5;
+const minVertical = 10;
 const maxVertical = 20;
 const marginSafety = 1;  // Margine di sicurezza orizzontale per il salto
 
@@ -206,11 +207,12 @@ function EmuSchermo({ pressedButtons }) {
   const jumpVelocity = 6;
   const gravity = -0.5;
 
-  // Stato di gioco: "countdown", "playing", "gameOver"
+  // Stato di gioco: "countdown", "playing", "gameOver", "SlotTime"
   const [gameState, setGameState] = useState("countdown");
   const [countdown, setCountdown] = useState(3);
   const [timeLeft, setTimeLeft] = useState(30);
   const [record, setRecord] = useState(0);
+  const [timeSlot, setTimeSlot] = useState(0)
 
 
   const [level, setLevel] = useState(1);
@@ -235,21 +237,6 @@ function EmuSchermo({ pressedButtons }) {
   const animationFrameId = useRef(null);
 
 
-
-  function renderImpact(x, y) {
-    return (
-      <div
-        style={{
-          position: 'absolute', // Posizionamento assoluto
-          left: `${x}%`,        // Posizione orizzontale in percentuale
-          bottom: `${y}%`,      // Posizione verticale in percentuale
-          height: `${ballSize + 5}%`,
-        }}
-      >
-        - 10 s
-      </div>
-    );
-  }
   
 
   // Countdown iniziale di 3 secondi
@@ -286,9 +273,10 @@ function EmuSchermo({ pressedButtons }) {
     }
   }, [gameState]);
 
+
   // Loop di aggiornamento del gioco (solo se in stato "playing")
   useEffect(() => {
-    if (gameState !== "playing") return;
+    if (gameState !== "playing" ) return;
     
     const update = () => {
       setBall((prev) => {
@@ -364,10 +352,9 @@ function EmuSchermo({ pressedButtons }) {
             const spikeBottom = platform.height;
             const spikeTop = platform.height + 3;
             const horizontalCollision = (x + ballSize > spikeLeft && x < spikeRight);
-            const verticalCollision = (y < spikeTop && y + ballSize > spikeBottom && vy <= 0);
+            const verticalCollision = (y < spikeTop && y + ballSize > spikeBottom ); //tolto vy<=0 
             if (horizontalCollision && verticalCollision) {
               setTimeLeft(prev => prev - 5);
-              renderImpact(x,y)
               platform.type = "p";
               break;
             }
@@ -377,10 +364,14 @@ function EmuSchermo({ pressedButtons }) {
             const goalBottom = platform.height;
             const goalTop = platform.height + 3;
             const horizontalCollision = (x + ballSize > goalLeft && x < goalRight);
-            const verticalCollision = (y < goalTop && y + ballSize > goalBottom && vy <= 0);
+            const verticalCollision = (y < goalTop && y + ballSize > goalBottom ); //tolto vy<=0 
             if (horizontalCollision && verticalCollision) {
-              // Aggiunge 15 secondi e passa al livello successivo
               setTimeLeft(prev => prev + 10);
+
+              if (level % 10 === 0){
+                setGameState("slotTime");
+                setTimeSlot(timeLeft);
+              }
               const newLevel = level + 1;
               setLevel(newLevel);
               SETLEVEL(generateLevel(newLevel));
@@ -450,6 +441,18 @@ function EmuSchermo({ pressedButtons }) {
           <p>Level: {level}</p>
         </div>
       )}
+
+{gameState === "slotTime" && (
+  <SlotTime
+    timeSlot={timeLeft}
+    onSlotComplete={(newTimeSlot) => {
+      setTimeLeft(timeLeft + newTimeSlot); // Update remaining time based on winnings
+      setCountdown(3);          // Reset countdown
+      setGameState("countdown"); // Return to game countdown state
+    }}
+    pressedButtons={pressedButtons} // Pass controller input state
+  />
+)}
 
       <div
         className="ball"
