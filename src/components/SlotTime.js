@@ -172,7 +172,7 @@ function SlotTime({ timeSlot, onSlotComplete, pressedButtons }) {
   const handleGameComplete = () => {
     if (gameState === 'result') {
       // Calculate new time based on winnings
-      const newTimeValue = result.multiplier > 0 ? (result.winnings - selectedBet) : 0;
+      const newTimeValue = result.multiplier > 0 ? (result.winnings - selectedBet) : 0 - selectedBet ;
       
       // Call parent callback with the new time value
       onSlotComplete(newTimeValue);
