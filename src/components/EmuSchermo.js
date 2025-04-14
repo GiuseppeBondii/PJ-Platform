@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./EmuSchermo.css";
+import App from "../App";
 import SlotTime from "./SlotTime";
 
 const maxHorizontalSpeed = 1.1;
@@ -403,6 +404,10 @@ function EmuSchermo({ pressedButtons }) {
     setGameState("countdown");
   };
 
+  const handleGoHome = () => {
+    window.location.reload(); //TODO: questa cosa è bruttissima ma funziona, comunque da cambiare
+  }
+  
   useEffect(() => {
     if (gameState === "gameOver") {
       const storedRecord = localStorage.getItem("record") ? parseInt(localStorage.getItem("record"), 10) : 0;
@@ -428,9 +433,18 @@ function EmuSchermo({ pressedButtons }) {
     {gameState === "gameOver" && (
         <div className="gameover-overlay">
           <h1>Game Over</h1>
-          <p>Livello raggiunto: {level}</p>
+          <p>Reached Level: {level}</p>
           <p>Record: {record}</p>
           <button className="playAgainButton" onClick={handlePlayAgain}>Play Again</button>
+          <button className="playAgainButton" onClick={handleGoHome}>Home</button>
+
+          {/*return (
+                  <HomeScreen 
+                    onPlay={handlePlay} 
+                    onRules={handleRules}
+                    onLeaderboard={handleLeaderboard}
+                  />
+                );*/}
         </div>
       )}
 

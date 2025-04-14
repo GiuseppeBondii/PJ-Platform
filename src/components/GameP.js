@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import EmuSchermo from "./EmuSchermo";
-import "./HomeP.css";
+import "./GameP.css";
 
 const BUTTONS = {
   A: 1,
@@ -13,7 +13,7 @@ const BUTTONS = {
   RIGHT: 8,
 };
 
-function HomeP() {
+function GameP() {
   // Stato per tracciare tutti i pulsanti attualmente premuti
   const [pressedButtons, setPressedButtons] = useState({});
 
@@ -382,4 +382,4 @@ function HomeP() {
   );
 }
 
-export default HomeP;
+export default GameP;
