@@ -14,7 +14,7 @@ const BUTTONS = {
 // Game configuration settings
 const GAME_CONFIG = {
   ANIMATION_DURATION: 5000,
-  MULTIPLIERS: [0,0.2,0.5,0.7,0.9, 1,1.2,1.5,1.7,1.9, 2,2.5,2.8, 3,3.5, 3.7, 4,4.5, 5, 6, 7, 8, 9, 10],
+  MULTIPLIERS: [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.2,0.5,0.7,0.9, 1,1.2,1.5,1.7,1.9, 2,2.5,2.8, 3,3.5, 3.7, 4,4.5, 5, 6, 7, 8, 9, 10],
   MIN_BET: 1,
 };
 
@@ -113,7 +113,7 @@ function SlotTime({ timeSlot, onSlotComplete, pressedButtons }) {
   
   // Initialize bet to minimum or maximum available
   useEffect(() => {
-    setSelectedBet(prev => Math.min(Math.max(GAME_CONFIG.MIN_BET, prev), timeSlot));
+    setSelectedBet(prev => Math.min(Math.max(timeSlot, prev), timeSlot));
   }, [timeSlot]);
 
   // Calculate random result
